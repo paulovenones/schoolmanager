@@ -1,0 +1,71 @@
+{% extends "layout.njk" %}
+
+{% block content %}
+<div class="card">
+	<section class="image" style="background: url({{ student.avatar_url }}) no-repeat  center center / cover"></section>
+	<section class="details">
+		<h3>Detalhes</h3>
+		<div class="item">
+				<div>Nome Completo</div>
+				<div>{{ student.name }}</div>
+		</div>
+
+		<div class="item">
+			<div>Email</div>
+			<div>{{ student.email }}</div>
+		</div>
+
+		<div class="item">
+				<div>Aniversário</div>
+				<div>{{ student.birth }}</div>
+		</div>
+
+		<div class="item">
+			<div>Ano escolar</div>
+			<div>
+				{% if student.grade == "5middle" %}
+					5º Ano - Ensino Fundamental
+				{% endif %}
+				{% if student.grade == "6middle" %}
+					6º Ano - Ensino Fundamental
+				{% endif %}
+				{% if student.grade == "7middle" %}
+					7º Ano - Ensino Fundamental
+				{% endif %}
+				{% if student.grade == "8middle" %}
+					8º Ano - Ensino Fundamental
+				{% endif %}
+				{% if student.grade == "9middle" %}
+					9º Ano - Ensino Fundamental
+				{% endif %}
+				{% if student.grade == "1high" %}
+					1º Ano - Ensino Médio
+				{% endif %}
+				{% if student.grade == "2high" %}
+					2º Ano - Ensino Médio
+				{% endif %}
+				{% if student.grade == "3high" %}
+					3º Ano - Ensino Médio
+				{% endif %}
+			</div>
+		</div>
+
+		<div class="item">
+			<div>Carga horária semanal</div>
+			<div>{{ student.weekly_workload }} horas</div>
+		</div>
+
+		<div class="item">
+			<div>Carga horária semanal</div>
+			<div>{{ student.weekly_workload }} horas</div>
+		</div>
+
+		<div class="item">
+			<div>Professor</div>
+			<div>{{ student.teacher_name }}</div>
+		</div>
+		<a class="button" href="/students/{{ student.id }}/edit">Editar</a>
+
+	</section>
+</div>
+{% endblock content %}

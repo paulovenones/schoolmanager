@@ -1,0 +1,74 @@
+{% extends "layout.njk" %}
+
+{% block content %}
+<div class="card table-container">
+	<div class="header">
+		<a class="button" href="/students/create">Novo</a>
+		<form action="/students" method="get">
+			<input 
+				type="text"
+				name="filter"
+				placeholder="Nome ou Email"
+				value={{filter}}
+				>
+			<button type="submit">Filtrar</button>
+		</form>
+
+	</div>
+	<table width="100%">
+		<thead>
+			<tr>
+				<th>Alunos</th>
+				<th>Email</th>
+				<th>Ano escolar</th>
+				<th>Ação</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for student in students %}
+				<tr>
+					<td>
+						<img src="{{ student.avatar_url }}" alt="">
+						{{ student.name }}
+					</td>
+					<td>	{{ student.email }}	</td>
+					<td>
+						{% if student.grade == "5middle" %}
+							5º Ano - Fundamental
+						{% endif %}
+						{% if student.grade == "6middle" %}
+							6º Ano - Fundamental
+						{% endif %}
+						{% if student.grade == "7middle" %}
+							7º Ano - Fundamental
+						{% endif %}
+						{% if student.grade == "8middle" %}
+							8º Ano - Fundamental
+						{% endif %}
+						{% if student.grade == "9middle" %}
+							9º Ano - Fundamental
+						{% endif %}
+						{% if student.grade == "1high" %}
+							1º Ano - Médio
+						{% endif %}
+						{% if student.grade == "2high" %}
+							2º Ano - Médio
+						{% endif %}
+						{% if student.grade == "3high" %}
+							3º Ano - Médio
+						{% endif %}
+					</td>
+					<td><a href="/students/{{ student.id }}">ver</a></td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+
+	<div class="pagination"
+			data-page={{pagination.page}}
+			data-total={{pagination.total}}
+			data-filter={{filter}}
+	>
+	</div>
+</div>
+{% endblock content %}
